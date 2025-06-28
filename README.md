@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+# 📌 TaskFlow - Todo Task Management Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📝 Overview
 
-## Available Scripts
+**TaskFlow** is a full-stack todo management web application that allows users to sign in with Google, create and manage their tasks, share them with others, and receive real-time feedback. It is responsive, cleanly designed, and supports both personal and collaborative task tracking.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ⚙️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Layer        | Tech Stack                         |
+|--------------|------------------------------------|
+| Frontend     | React, Tailwind CSS, Axios         |
+| Backend      | Node.js, Express.js, JWT, OAuth 2.0 |
+| Database     | MongoDB Atlas                      |
+| Auth         | Google OAuth 2.0                   |
+| Deployment   | Vercel (Frontend), Railway (Backend) |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✅ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🔐 Google login via OAuth 2.0
+- 🧾 Create, edit, delete, and complete tasks
+- 🧑‍🤝‍🧑 Share tasks with other users via email
+- 🎉 Popup modal when all tasks are completed
+- 🔎 Filter tasks by status, priority, and due date
+- 🔄 Real-time feedback using polling or refresh
+- 📱 Fully responsive design (desktop + mobile)
+- 📦 Modular code with clean folder structure
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🖥️ Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+taskflow-app/
+├── todo-frontend/ # React frontend
+│ └── src/components/
+│ └── App.js, index.js
+│ └── .env
+├── todo-backend/ # Express backend
+│ └── routes/tasks.js
+│ └── models/
+│ └── .env
+└── README.md
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔐 OAuth Configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Follow these steps to enable Google Login:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+2. Create an OAuth 2.0 Client ID
+3. Add `http://localhost:3000` (for frontend) in the **Authorized JavaScript Origins**
+4. Add `/auth/google/callback` (or similar route) to **Authorized Redirect URIs**
+5. Add the credentials to your `.env` file like this:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```env
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
 
-## Learn More
+## **Local Setup Instructions**
+1. Clone the repository
+git clone https://github.com/your-username/taskFlow-app.git
+cd taskFlow-app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2.Setup Backend
+cd todo-backend
+npm install
+# Create .env and add DB_URI, PORT, OAuth Client ID/Secret
+npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3.Setup Frontend
+cd ../todo-frontend
+npm install
+# Create .env and add API_URL (your backend base URL)
+npm run dev
 
-### Code Splitting
+## 🌐 Live Deployment Links
+https://taskflow-complete-flow.lovable.app/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧠 Assumptions
+Only Google login implemented for OAuth (other providers optional)
+Real-time updates are simulated using useEffect and state refresh
+Tasks are scoped per user by token
+Shared users see shared tasks under their account
 
-### Analyzing the Bundle Size
+## account
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+🖼️ Architecture Diagram
+                                ┌────────────────────┐
+                                │   👤 End Users      │
+                                └────────┬───────────┘
+                                         │
+                          ┌──────────────▼──────────────┐
+                          │     🌐 Frontend (React)     │
+                          │ Vercel / Netlify / Firebase │
+                          └──────────────┬──────────────┘
+                                         │ API Calls (HTTPS)
+                                         ▼
+                     ┌────────────────────────────┐
+                     │   Backend (Node.js/Express) │
+                     │ Fly.io / Railway / Render   │
+                     └──────────────┬──────────────┘
+                                    │
+               ┌────────────────────▼────────────────────┐
+               │   🛡️ Authentication & Authorization     │
+               │  (OAuth 2.0 - Google / GitHub Login)     │
+               └────────────────────┬────────────────────┘
+                                    │
+                     ┌──────────────▼─────────────┐
+                     │     💾 Database (MongoDB)  │
+                     │    MongoDB Atlas / Supabase│
+                     └────────────────────────────┘
 
-### Making a Progressive Web App
+## Explanation of the Flow:
+# Frontend (React):
+1.Includes login screen (OAuth), dashboard, task list, and UI components.
+2.Communicates with backend APIs via Axios.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Authentication (OAuth):
+1.Users log in via Google or GitHub.
+2.JWT token stored in localStorage for session management.
 
-### Advanced Configuration
+# Backend (Node.js + Express):
+1.Handles routes: /api/tasks, /auth, etc.
+2.Handles user-specific and shared tasks.
+3.Deployed on Railway, Render, or Fly.io.
+4.ncludes WebSocket server for real-time updates (optional).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#Database:
+stores:
+Users
+Tasks
+Shared Task Access
+Customizations (theme, profile info)
 
-### Deployment
+# Real-time Updates (optional):
+WebSocket or polling can be used for auto-refreshing task lists.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🎥 Loom Video (Demo)
+
+
+---
+This project is a part of a hackathon run by https://www.katomaran.com
