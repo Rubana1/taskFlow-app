@@ -61,7 +61,7 @@ taskflow-app/
 GOOGLE_CLIENT_ID=your-client-id
 GOOGLE_CLIENT_SECRET=your-client-secret
 
-##**Local Setup Instructions**
+**Local Setup Instructions**
 1. Clone the repository
 git clone https://github.com/your-username/taskFlow-app.git
 cd taskFlow-app
@@ -78,16 +78,16 @@ npm install
 # Create .env and add API_URL (your backend base URL)
 npm run dev
 
-##🌐 Live Deployment Links
+**🌐 Live Deployment Links**
 https://taskflow-complete-flow.lovable.app/
 
-## 🧠 Assumptions
+**🧠 Assumptions**
 Only Google login implemented for OAuth (other providers optional)
 Real-time updates are simulated using useEffect and state refresh
 Tasks are scoped per user by token
 Shared users see shared tasks under their account
 
-##🖼️ Architecture Diagram
+**🖼️ Architecture Diagram**
                                 ┌────────────────────┐
                                 │   👤 End Users      │
                                 └────────┬───────────┘
@@ -113,34 +113,34 @@ Shared users see shared tasks under their account
                      │    MongoDB Atlas / Supabase│
                      └────────────────────────────┘
 
-##Explanation of the Flow:
-# Frontend (React):
+**Explanation of the Flow:**
+**Frontend (React):**
 1.Includes login screen (OAuth), dashboard, task list, and UI components.
 2.Communicates with backend APIs via Axios.
 
-# Authentication (OAuth):
+**Authentication (OAuth):**
 1.Users log in via Google or GitHub.
 2.JWT token stored in localStorage for session management.
 
-# Backend (Node.js + Express):
+**Backend (Node.js + Express):**
 1.Handles routes: /api/tasks, /auth, etc.
 2.Handles user-specific and shared tasks.
 3.Deployed on Railway, Render, or Fly.io.
 4.ncludes WebSocket server for real-time updates (optional).
 
-#Database:
+**Database:**
 stores:
 Users
 Tasks
 Shared Task Access
 Customizations (theme, profile info)
 
-#Real-time Updates (optional):
+**Real-time Updates (optional):**
 WebSocket or polling can be used for auto-refreshing task lists.
 
 
 
-## 🎥 Loom Video (Demo)
+**🎥 Loom Video (Demo)**
 
 
 ---
