@@ -1,0 +1,8 @@
+todo-backend/.env
+# Ignore .env and sensitive files
+todo-backend/.env
+node_modules
+dist
+.env
+.DS_Store
+
