@@ -61,7 +61,7 @@ taskflow-app/
 GOOGLE_CLIENT_ID=your-client-id
 GOOGLE_CLIENT_SECRET=your-client-secret
 
-## **Local Setup Instructions**
+##**Local Setup Instructions**
 1. Clone the repository
 git clone https://github.com/your-username/taskFlow-app.git
 cd taskFlow-app
@@ -69,7 +69,7 @@ cd taskFlow-app
 2.Setup Backend
 cd todo-backend
 npm install
-# Create .env and add DB_URI, PORT, OAuth Client ID/Secret
+#Create .env and add DB_URI, PORT, OAuth Client ID/Secret
 npm start
 
 3.Setup Frontend
@@ -78,7 +78,7 @@ npm install
 # Create .env and add API_URL (your backend base URL)
 npm run dev
 
-## 🌐 Live Deployment Links
+##🌐 Live Deployment Links
 https://taskflow-complete-flow.lovable.app/
 
 ## 🧠 Assumptions
@@ -87,9 +87,7 @@ Real-time updates are simulated using useEffect and state refresh
 Tasks are scoped per user by token
 Shared users see shared tasks under their account
 
-## account
-
-🖼️ Architecture Diagram
+##🖼️ Architecture Diagram
                                 ┌────────────────────┐
                                 │   👤 End Users      │
                                 └────────┬───────────┘
@@ -115,7 +113,7 @@ Shared users see shared tasks under their account
                      │    MongoDB Atlas / Supabase│
                      └────────────────────────────┘
 
-## Explanation of the Flow:
+##Explanation of the Flow:
 # Frontend (React):
 1.Includes login screen (OAuth), dashboard, task list, and UI components.
 2.Communicates with backend APIs via Axios.
@@ -137,7 +135,7 @@ Tasks
 Shared Task Access
 Customizations (theme, profile info)
 
-# Real-time Updates (optional):
+#Real-time Updates (optional):
 WebSocket or polling can be used for auto-refreshing task lists.
 
 
