@@ -141,7 +141,7 @@ WebSocket or polling can be used for auto-refreshing task lists.
 
 
 **🎥 Loom Video (Demo)**
-https://drive.google.com/file/d/1Udr-4KzBpmQu79XdQ0TYNLra9CG2Tks2/view?usp=drive_link
+[https://drive.google.com/file/d/1Udr-4KzBpmQu79XdQ0TYNLra9CG2Tks2/view?usp=drive_link](https://drive.google.com/file/d/1kOZZKgfR5wAzd8q3sFhlEbyY65ipOOf7/view?usp=sharing)
 
 ---
 This project is a part of a hackathon run by https://www.katomaran.com
